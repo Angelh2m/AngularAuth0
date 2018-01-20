@@ -1,0 +1,140 @@
+
+<h3>Forms <small> template</small></h3>
+<hr>
+<!-- Angular submit (ngSubmit) | template and form binding | novalidate to disable the default html5 validation  -->
+<form [formGroup]="form" (ngSubmit)="saveChanges()" novalidate="novalidate" >
+  <div formGroupName="completeName">
+
+      <!-- formControlName instead of the name attribute -->
+      <!-- use form.get() to see if the class is valid -->
+      <!-- [ngClass]="{'has-danger': !form.get('name').valid }" -->
+    <div class="form-group row" [ngClass]="{'has-danger': !form.get('completeName.name').valid }"  >
+      <label class="col-2 col-form-label">Name</label>
+      <div class="col-8">
+        <input
+        type='text'
+        class="form-control"
+        placeholder="Name"
+        formControlName="name"
+        >
+
+        <div *ngIf="form.get('completeName.name').errors?.required">
+          <div class="form-control-feedback">
+            This name is required
+          </div>
+        </div>
+
+        <div *ngIf="form.get('completeName.name').errors?.minlength">
+            <div class="form-control-feedback">
+              The name needs to be at least 3 letters
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Last Name</label>
+      <div class="col-8">
+        <input
+        type='text'
+        class="form-control"
+        placeholder="Last Name"
+        formControlName="lastName"
+        >
+      </div>
+    </div>
+  </div>
+  <!-- End of  formGroupName="completeName" -->
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">E-mail</label>
+      <div class="col-8">
+        <input
+        name="email"
+        class="form-control"
+        placeholder="email"
+        formControlName="email"
+        >
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Hobbies</label>
+        <div class="col-8" formArrayName="hobbies">
+          <input
+          *ngFor="let hobbie of form.controls['hobbies'].controls; let i = index;"
+          name="text"
+          placeholder="hobbies"
+          class="form-control"
+          [formControlName]="i"
+          >
+        </div>
+        <button
+          (click)="addHobbie()"
+          type="button"
+          class="btn btn-primary"> New </button>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Username</label>
+        <div class="col-8" >
+          <input
+          type="text"
+          name="username"
+          placeholder="User"
+          class="form-control"
+          formControlName="username"
+          >
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Password</label>
+        <div class="col-8" >
+          <input
+          type="password"
+          name="password1"
+          placeholder="Password"
+          class="form-control"
+          formControlName="password1"
+          >
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Repeat Password</label>
+        <div class="col-8" >
+          <input
+          type="password"
+          name="password2"
+          placeholder="Password"
+          class="form-control"
+          formControlName="password2"
+          >
+        </div>
+    </div>
+
+      <small>
+        {{ form.valid}}
+      </small>
+      <br>
+      <small>
+        {{ form.status }}
+      </small>
+
+      <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp; </label>
+        <div class="input-group col-md-8">
+          <button
+          type='submit' class="btn btn-outline-primary">Submit</button>
+        </div>
+      </div>
+
+
+</form>
+
+
+<!-- <pre>
+  {{ user | json}}
+</pre> -->

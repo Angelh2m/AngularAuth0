@@ -68,18 +68,20 @@ export class AuthService {
 
 
   public getProfile(cb): void {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
-      throw new Error('Access token must exist to fetch profile');
-    }
+      const accessToken = localStorage.getItem('access_token');
+      if (!accessToken) {
+        throw new Error('Access token must exist to fetch profile');
+      }
 
-  const self = this;
-  this.auth0.client.userInfo(accessToken, (err, profile) => {
-    if (profile) {
-      self.userProfile = profile;
-    }
-    cb(err, profile);
-  });
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
 
+
+  }
 
 }
