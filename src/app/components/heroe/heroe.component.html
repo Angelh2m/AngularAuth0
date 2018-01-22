@@ -1,0 +1,54 @@
+<h3> Dog <small>breed...</small> </h3>
+
+<button  [routerLink]="'/firebase'" class="btn btn-outline-danger">Go back</button>
+
+<div class="row animated fadeIn fast">
+  <div class="col-12">
+    <form (ngSubmit)="save()" #form="ngForm" >
+      <div class="form-group">
+        <label >Name</label>
+        <input
+        [(ngModel)]="dog.name"
+        name="name"
+        placeholder="Name of the dog..."
+        class="form-control"
+        type="text"
+        required>
+      </div>
+      <div class="form-group">
+        <label >Breed</label>
+        <input
+        [(ngModel)]="dog.breed"
+        name="breed"
+        placeholder="Breed"
+        class="form-control"
+        type="text"
+        required>
+      </div>
+      <div class="form-group">
+          <label >Size</label>
+          <select
+          [(ngModel)]="dog.size"
+          name="size"
+          class="form-control">
+            <option value="small">Small</option>
+            <option value="small">Medium</option>
+            <option value="small">Big</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label >Description</label>
+          <textarea
+          [(ngModel)]="dog.bio"
+          name="bio"
+          class="form-control"
+          name="description"
+          placeholder="Description"></textarea>
+      </div>
+      <div class="form-control">
+        <button [disabled]="!form.valid"
+        type="submit" class="btn btn-outline-primary">Save dog</button>
+      </div>
+    </form>
+  </div>
+</div>

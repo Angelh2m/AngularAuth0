@@ -1,0 +1,43 @@
+
+<div class="row animated fadeIn fast ">
+  <div class="col-md-12 text-right">
+    <button
+    [routerLink]="['/firebase', 'new']"
+    name="button"
+    type="button"
+    class="btn btn-outline-primary" >
+    New Dog
+    </button>
+  </div>
+</div>
+
+<br>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr >
+        <th></th>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Origin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dogE of dogsArray | keys " >
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
