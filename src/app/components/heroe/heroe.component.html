@@ -6,7 +6,7 @@
   <div class="col-12">
     <form (ngSubmit)="save()" #form="ngForm" >
       <div class="form-group">
-        <label >Name</label>
+        <label >Name: {{dog.name}}</label>
         <input
         [(ngModel)]="dog.name"
         name="name"

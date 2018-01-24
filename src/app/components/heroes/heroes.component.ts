@@ -8,15 +8,21 @@ import { DogsService } from '../../services/dogs.service';
 })
 export class HeroesComponent implements OnInit {
 
-  dogsArray:any = [];
+  dogsArray:any[] = [];
+  loading:boolean = true;
 
   constructor(
     private dogService: DogsService
   ) {
     this.dogService.getDogs()
       .subscribe( data => {
-        console.log(data);
         this.dogsArray = data;
+        // this.loading = false;
+        setTimeout(() => this.loading = false, 3000);
+        // for( let key$ in data){
+        //   console.log(data[key$]);
+        //   this.dogsArray.push( data[key$]);
+        // }
 
 
       });

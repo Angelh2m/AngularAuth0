@@ -24,12 +24,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let dogE of dogsArray | keys " >
+      <tr *ngFor="let k of dogsArray | keys; let i = index" >
+        <td>{{ dogsArray[k].name }}</td>
+        <td>{{ dogsArray[k].breed }}</td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td> <button
+          [routerLink]="['/firebase', k]"
+          class="btn btn-outline-success"
+          type="button"
+          >
+          Edit
+        </button> </td>
       </tr>
       <tr>
         <td></td>
@@ -40,4 +45,11 @@
       </tr>
     </tbody>
   </table>
+
+    <div
+    *ngIf="loading"
+    class="alert alert-warning" role="alert">
+      <strong>Loading ...</strong> wait please
+    </div>
+
 </div>
